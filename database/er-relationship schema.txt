@@ -1,0 +1,17 @@
+STUDENTS
+student_id | name | course_code | year_level | gender |
+
+COURSES
+course_name | course_code
+
+SUBJECTS
+t_id |subject_name | subject_code | credits 
+
+TAKES ON
+sub_code | stud_id | first_name | mid_name | last_name
+
+TEACHERS
+teacher_id | username | password
+
+CONTACT_NO
+stud_id | phone_num

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>236</width>
+    <height>359</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Add New</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>images/main_icon.png</normaloff>images/main_icon.png</iconset>
+  </property>
+  <widget class="QWidget" name="header" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>240</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#header{
+background-color: rgb(0, 170, 255);
+}</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="formLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>19</x>
+     <y>130</y>
+     <width>201</width>
+     <height>221</height>
+    </rect>
+   </property>
+   <layout class="QFormLayout" name="formLayout">
+    <property name="leftMargin">
+     <number>5</number>
+    </property>
+    <property name="topMargin">
+     <number>5</number>
+    </property>
+    <property name="rightMargin">
+     <number>5</number>
+    </property>
+    <property name="bottomMargin">
+     <number>5</number>
+    </property>
+    <item row="0" column="0">
+     <widget class="QLabel" name="studentIDLabel">
+      <property name="text">
+       <string>studentID</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="studentIDLineEdit"/>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="firstNameLabel">
+      <property name="text">
+       <string>First Name</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="firstNameLineEdit"/>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="middleNameLabel">
+      <property name="text">
+       <string>Middle Name</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="middleNameLineEdit"/>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="lastNameLabel">
+      <property name="text">
+       <string>Last Name</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QLineEdit" name="lastNameLineEdit"/>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="courseLabel">
+      <property name="text">
+       <string>Course</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QLineEdit" name="courseLineEdit"/>
+    </item>
+    <item row="5" column="0">
+     <widget class="QLabel" name="yearLevelLabel">
+      <property name="text">
+       <string>Year Level</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="1">
+     <widget class="QComboBox" name="yearLevelComboBox"/>
+    </item>
+    <item row="6" column="0">
+     <widget class="QLabel" name="genderLabel">
+      <property name="text">
+       <string>Gender</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="1">
+     <widget class="QComboBox" name="genderComboBox"/>
+    </item>
+    <item row="7" column="0" colspan="2">
+     <widget class="QPushButton" name="AddStudent">
+      <property name="text">
+       <string>Add Student</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QLabel" name="label_pic">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>20</y>
+     <width>101</width>
+     <height>100</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>images/changeusername_icon.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+   <property name="wordWrap">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_editPic">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>90</y>
+     <width>31</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>images/edit_icon.png</normaloff>images/edit_icon.png</iconset>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
