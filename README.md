@@ -1,0 +1,3 @@
+# SSIS-version2.0
+DATABASE: MySQL
+GUI: PyQt5
