@@ -1,13 +1,14 @@
 import sys
 
 from PyQt5.QtWidgets import QTableWidgetItem
-
 import re
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QMessageBox
 from ssis_main_UI import Ui_MainWindow
 from ssis_login_UI import Ui_Login
 from ssis_signup_UI import Ui_SignUp
 from form import Ui_Form
+import messagebox
 import db
 
 class Login(QtWidgets.QWidget, Ui_Login):
@@ -73,7 +74,6 @@ class SignUp(QtWidgets.QWidget, Ui_SignUp):
                 QtWidgets.QMessageBox.information(self, "Oops!", "Username already taken.", QtWidgets.QMessageBox.Ok)
                 self.ui.username.setFocus()
         else:
-            print('here')
             QtWidgets.QMessageBox.information(self, "Incomplete Information", "Hi there human! \nSorry, but they are all necessary information.\nPlease fill them all up. Thank you!",
                                               QtWidgets.QMessageBox.Ok)
 
@@ -99,16 +99,17 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def configureWidgets(self):
         self.ui.pushButton_addNew.clicked.connect(self.goto_addStudent)
+        self.ui.pushButton_search.clicked.connect(self.search_student)
         self.fillTable()
 
-    def fillTable(self):
-        students = db.students()
+
+    def fillTable(self, students=db.students()):
         row = 0
         self.ui.tableWidget.setRowCount(len(students))
         for student in students:
-            self.ui.tableWidget.setItem(row, 0, QTableWidgetItem(student[0]))
-            self.ui.tableWidget.setItem(row, 1, QTableWidgetItem(student[1]))
-            self.ui.tableWidget.setItem(row, 2, QTableWidgetItem(student[2]))
+            self.ui.tableWidget.setItem(row, 0, QTableWidgetItem(str(student[0])))
+            self.ui.tableWidget.setItem(row, 1, QTableWidgetItem(str(student[1])))
+            self.ui.tableWidget.setItem(row, 2, QTableWidgetItem(str(student[2])))
             self.ui.tableWidget.setItem(row, 3, QTableWidgetItem(str(student[3])))
             self.ui.tableWidget.setItem(row, 4, QTableWidgetItem(str(student[4])))
 
@@ -118,6 +119,30 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def goto_addStudent(self):
         self.popUp = AddStudent(self)
         self.popUp.show()
+
+    def search_student(self):
+        type = self.ui.comboBox.currentText()
+        key = str(self.ui.lineEdit_searchkey.text())
+        if type == 'ID':
+            result = db.students('SELECT * FROM students where students_id = "%s"' % key)
+        elif type == 'FIRST NAME':
+            result = db.students('SELECT * FROM students where first_name = "%s"' % key)
+        elif type == 'MIDDLE NAME':
+            result = db.students('SELECT * FROM students where middle_name = "%s"' % key)
+        elif type == 'LAST NAME':
+            result = db.students('SELECT * FROM students where last_name = "%s"' % key)
+        elif type == 'COURSE':
+            result = db.students('SELECT * FROM students where fk_course_code = "%s"' % key)
+        elif type == 'YEAR':
+            result = db.students('SELECT * FROM students where year_level = "%s"' % int(key))
+        elif type == 'GENDER':
+            result = db.students('SELECT * FROM students where gender = "%s"' % key)
+
+        if len(result) == 0:
+            messagebox.noResult(self)
+            self.fillTable()
+        else:
+            self.fillTable(students=result)
 
 
 class AddStudent(QtWidgets.QMainWindow, Ui_Form):

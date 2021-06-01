@@ -6,8 +6,7 @@ database = mysql.connect(host = 'localhost',
                                  database = 'student_information')
 cursor = database.cursor()
 
-def students():
-    query = 'SELECT * FROM students'
+def students(query = 'SELECT * FROM students'):
     cursor.execute(query)
     students = cursor.fetchall()
     students = [list(student) for student in students]
@@ -20,12 +19,7 @@ def students():
 
     return students
 
-def get_student(query=None):
-    cursor.execute(query)
-    student = cursor.fetchall()
-    student = list(student[0])
 
-    return student
 
 
 def get_courses(query='SELECT course_code from courses'):
