@@ -3,13 +3,14 @@ import sys
 from PyQt5.QtWidgets import QTableWidgetItem
 import re
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QMessageBox
 from ssis_main_UI import Ui_MainWindow
 from ssis_login_UI import Ui_Login
 from ssis_signup_UI import Ui_SignUp
 from form import Ui_Form
+from courseForm import Ui_courseForm
 import messagebox
 import db
+
 
 class Login(QtWidgets.QWidget, Ui_Login):
     def __init__(self):
@@ -102,6 +103,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.ui.pushButton_search.clicked.connect(self.search_student)
         self.ui.pushButton_edit.clicked.connect(self.edit_student)
         self.ui.pushButton_delete.clicked.connect(self.delete_student)
+        self.ui.pushButton_LOGOUT.clicked.connect(self.logout)
         self.fillTable()
 
 
@@ -120,6 +122,11 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def goto_addStudent(self):
         self.popUp = AddStudent(self, winName='Add New Student')
         self.popUp.show()
+
+    def logout(self):
+        self.close()
+        self.login = Login()
+        self.login.show()
 
     def search_student(self):
         type = self.ui.comboBox.currentText()
@@ -171,6 +178,7 @@ class AddStudent(QtWidgets.QMainWindow, Ui_Form):
         self.configureWidgets()
 
     def configureWidgets(self):
+        self.ui.lineEdit.setPlaceholderText('YYYY-NNNN')
         self.ui.comboBox.addItems(db.get_courses())
         self.ui.comboBox.setCurrentText('')
         self.ui.comboBox_2.addItems(['', '1','2','3','4','5','6'])
@@ -200,7 +208,7 @@ class AddStudent(QtWidgets.QMainWindow, Ui_Form):
 
 
     def checkInformation(self, mode=None):
-        d=mode
+        d = mode
         id = self.ui.lineEdit.text()
         first_name = self.ui.lineEdit_2.text()
         middle_name = self.ui.lineEdit_3.text()
@@ -208,7 +216,7 @@ class AddStudent(QtWidgets.QMainWindow, Ui_Form):
         course = self.ui.comboBox.currentText()
         year = str(self.ui.comboBox_2.currentText())
         gender = str(self.ui.comboBox_3.currentText())
-        if id and first_name and last_name and course and year and gender:
+        if id and first_name and last_name and course in db.get_courses() and year and gender:
 
             if not d:
                 db.add_student(id, first_name, middle_name, last_name, course, year, gender)
@@ -219,6 +227,23 @@ class AddStudent(QtWidgets.QMainWindow, Ui_Form):
                 self.close()
 
             self.p.fillTable(students=db.students())
+
+        elif course not in db.get_courses():
+            self.addCourse = CourseForm(MainWindow(), mode = 'add', course_code=course, winName='Add Course')
+            self.addCourse.show()
+
+
+class CourseForm(QtWidgets.QMainWindow, Ui_courseForm):
+    def __init__(self, parent=None, mode=None, course_code=None, winName=None):
+        super(CourseForm, self).__init__(parent)
+        self.p = parent
+        self.mode = mode
+        self.coursecode = course_code
+        self.ui = Ui_courseForm()
+        self.ui.setupUi(self, parent, mode, course_code, winName)
+        self.configureWidgets()
+    def configureWidgets(self):
+        self.ui.coursecode.setText(self.coursecode)
 
 
 
