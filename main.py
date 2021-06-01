@@ -101,6 +101,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.ui.pushButton_addNew.clicked.connect(self.goto_addStudent)
         self.ui.pushButton_search.clicked.connect(self.search_student)
         self.ui.pushButton_edit.clicked.connect(self.edit_student)
+        self.ui.pushButton_delete.clicked.connect(self.delete_student)
         self.fillTable()
 
 
@@ -115,7 +116,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.ui.tableWidget.setItem(row, 4, QTableWidgetItem(str(student[4])))
 
             row += 1
-        return
 
     def goto_addStudent(self):
         self.popUp = AddStudent(self, winName='Add New Student')
@@ -151,6 +151,13 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.openForm = AddStudent(self, mode='edit', studID=selected_id, winName='Edit Student')
             self.openForm.show()
 
+    def delete_student(self):
+        if self.ui.tableWidget.selectedItems() != []:
+            selected_id = self.ui.tableWidget.item(self.ui.tableWidget.currentRow(),0).text()
+            selected_name = self.ui.tableWidget.item(self.ui.tableWidget.currentRow(),1).text()
+            if messagebox.confirmDelete(self, selected_name) == 'continue':
+                db.delete_student(selected_id)
+                self.fillTable(db.students())
 
 
 class AddStudent(QtWidgets.QMainWindow, Ui_Form):
@@ -205,10 +212,13 @@ class AddStudent(QtWidgets.QMainWindow, Ui_Form):
 
             if not d:
                 db.add_student(id, first_name, middle_name, last_name, course, year, gender)
+                messagebox.addSuccessful(MainWindow())
+                self.close()
             else:
                 db.update_student(self.studID, first_name, middle_name, last_name, course, year, gender)
+                self.close()
 
-            self.p.fillTable(db.students())
+            self.p.fillTable(students=db.students())
 
 
 
