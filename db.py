@@ -13,11 +13,19 @@ def students(query = 'SELECT * FROM students'):
 
     for i in range(len(students)):
         if students[i][2] != '':
-            students[i] = [students[i][0], students[i][1] + ' '+ students[i][2][0] + ' ' + students[i][3], students[i][4], students[i][5], students[i][6]]
+            students[i] = [students[i][0], students[i][1] + ' '+ students[i][2][0] + '. ' + students[i][3], students[i][4], students[i][5], students[i][6]]
         else:
             students[i] = [students[i][0], students[i][1] + ' '+ students[i][2] + ' ' + students[i][3], students[i][4], students[i][5], students[i][6]]
 
     return students
+
+def get_student(id=None):
+    query = 'SELECT * FROM students where students_id = "%s"' % id
+    cursor.execute(query)
+    result = cursor.fetchall()
+    result = list(result[0])
+
+    return result
 
 
 
@@ -37,6 +45,7 @@ def update_student(id, first, middle, last, course, year, gender):
     query = ('UPDATE students SET first_name = "%s", middle_name = "%s", last_name = "%s", fk_course_code = "%s", year_level = "%s", gender = "%s" WHERE students_id = "%s";' % ( first, middle, last, course, year, gender, id ))
     cursor.execute(query)
     database.commit()
+
     return
 
 

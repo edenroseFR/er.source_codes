@@ -100,6 +100,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def configureWidgets(self):
         self.ui.pushButton_addNew.clicked.connect(self.goto_addStudent)
         self.ui.pushButton_search.clicked.connect(self.search_student)
+        self.ui.pushButton_edit.clicked.connect(self.edit_student)
         self.fillTable()
 
 
@@ -117,7 +118,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         return
 
     def goto_addStudent(self):
-        self.popUp = AddStudent(self)
+        self.popUp = AddStudent(self, winName='Add New Student')
         self.popUp.show()
 
     def search_student(self):
@@ -144,22 +145,55 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         else:
             self.fillTable(students=result)
 
+    def edit_student(self):
+        if self.ui.tableWidget.selectedItems() != []:
+            selected_id = self.ui.tableWidget.item(self.ui.tableWidget.currentRow(),0).text()
+            self.openForm = AddStudent(self, mode='edit', studID=selected_id, winName='Edit Student')
+            self.openForm.show()
+
+
 
 class AddStudent(QtWidgets.QMainWindow, Ui_Form):
-    def __init__(self, parent=None):
+    def __init__(self, parent=None, mode=None, studID=None, winName=None):
         super(AddStudent, self).__init__(parent)
         self.p = parent
+        self.mode = mode
+        self.studID = studID
         self.ui = Ui_Form()
-        self.ui.setupUi(self)
+        self.ui.setupUi(self, parent, mode, studID, winName)
         self.configureWidgets()
 
     def configureWidgets(self):
-        self.ui.pushButton.clicked.connect(self.checkInformation)
         self.ui.comboBox.addItems(db.get_courses())
-        self.ui.comboBox_2.addItems(['1','2','3','4','5','6'])
-        self.ui.comboBox_3.addItems(['Male','Female','Lesbian','Gay','Bisexual','Transgender','Unknown'])
+        self.ui.comboBox.setCurrentText('')
+        self.ui.comboBox_2.addItems(['', '1','2','3','4','5','6'])
+        self.ui.comboBox_3.addItems(['', 'Male','Female','Lesbian','Gay','Bisexual','Transgender','Unknown'])
 
-    def checkInformation(self):
+        if self.mode == 'edit':
+            details = db.get_student(self.ui.studID)
+            self.ui.lineEdit.setText(self.ui.studID)
+            self.ui.lineEdit.setDisabled(True)
+
+            self.ui.lineEdit_2.setText(details[1])
+            self.ui.lineEdit_3.setText(details[2])
+            self.ui.lineEdit_6.setText(details[3])
+
+            self.ui.comboBox.setCurrentText(details[4])
+            self.ui.comboBox_2.setCurrentText(str(details[5]))
+            self.ui.comboBox_3.setCurrentText(details[6])
+
+            self.ui.pushButton.setText('Update Student')
+            self.ui.pushButton.clicked.connect(self.__edit)
+        else:
+            self.ui.pushButton.clicked.connect(self.checkInformation)
+
+    def __edit(self):
+        self.checkInformation(mode='edit')
+
+
+
+    def checkInformation(self, mode=None):
+        d=mode
         id = self.ui.lineEdit.text()
         first_name = self.ui.lineEdit_2.text()
         middle_name = self.ui.lineEdit_3.text()
@@ -167,9 +201,16 @@ class AddStudent(QtWidgets.QMainWindow, Ui_Form):
         course = self.ui.comboBox.currentText()
         year = str(self.ui.comboBox_2.currentText())
         gender = str(self.ui.comboBox_3.currentText())
-        if id and first_name and middle_name and last_name and course and year and gender:
-            db.add_student(id,first_name,middle_name,last_name,course,year,gender)
-            self.p.fillTable()
+        if id and first_name and last_name and course and year and gender:
+
+            if not d:
+                db.add_student(id, first_name, middle_name, last_name, course, year, gender)
+            else:
+                db.update_student(self.studID, first_name, middle_name, last_name, course, year, gender)
+
+            self.p.fillTable(db.students())
+
+
 
 
 

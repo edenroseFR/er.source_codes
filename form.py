@@ -12,9 +12,12 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_Form(object):
-    def setupUi(self, MainWindow, parent=None):
+    def setupUi(self, MainWindow, parent=None, mode=None, studID=None, winName = 'Add New Student'):
         self.p = parent
-        MainWindow.setObjectName("MainWindow")
+        self.mode = mode
+        self.studID = studID
+        self.winName = winName
+        MainWindow.setObjectName(self.winName)
         MainWindow.resize(264, 344)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("../images/main_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -85,7 +88,7 @@ class Ui_Form(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "Add Student"))
+        MainWindow.setWindowTitle(_translate("MainWindow", self.winName))
         self.labelID.setText(_translate("MainWindow", "STUDENT ID"))
         self.labelfirstname.setText(_translate("MainWindow", "FIRST NAME"))
         self.labelmiddlename.setText(_translate("MainWindow", "MIDDLE NAME"))
