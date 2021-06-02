@@ -60,9 +60,36 @@ def byLastName():
     sorted_student = []
 
     for i in sorted_lastName:
-        students = db.get_lastname(i)
+        students = db.get_student_with_lastname(i)
         for j in students:
             sorted_student.append(j)
 
     return sorted_student
 
+
+def bycourse():
+    unsorted_courses = db.get_StudentCourse()
+    sorted_courses = mergeSort(unsorted_courses)
+    sorted_student = []
+
+    for i in sorted_courses:
+        students = db.get_student_with_course(i)
+        for j in students:
+            sorted_student.append(j)
+
+    return sorted_student
+
+def byYearLevel():
+    unsorted_year = db.get_StudentLevel()
+    sorted_year = mergeSort(unsorted_year)
+    sorted_student = []
+
+
+    for i in sorted_year:
+        students = db.get_student_with_year(i)
+        for j in students:
+            sorted_student.append(j)
+
+    return sorted_student
+
+print(byYearLevel())

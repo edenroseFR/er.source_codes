@@ -39,7 +39,7 @@ def get_IDs():
     return ids
 
 
-def get_lastname(last_name = None):
+def get_student_with_lastname(last_name = None):
     query = ('SELECT * FROM students where last_name = "%s"' % last_name)
     cursor.execute(query)
     lastnames = cursor.fetchall()
@@ -69,7 +69,68 @@ def get_StudentLastname(query='SELECT last_name FROM students'):
 
     return unique_ln
 
+def get_StudentLevel(query='SELECT year_level FROM students'):
+    cursor.execute(query)
+    levels = cursor.fetchall()
+    levels = [list(level) for level in levels]
+    unique_yl = []
 
+    for i in range(len(levels)):
+        levels[i] = levels[i][0]
+
+    for i in levels:
+        if i not in unique_yl:
+            unique_yl.append(i)
+
+    return unique_yl
+
+
+def get_StudentCourse(query='SELECT fk_course_code FROM students'):
+    cursor.execute(query)
+    courses = cursor.fetchall()
+    courses = [list(course) for course in courses]
+    unique_c = []
+
+    for i in range(len(courses)):
+        courses[i] = courses[i][0]
+
+    for i in courses:
+        if i not in unique_c:
+            unique_c.append(i)
+
+    return unique_c
+
+def get_student_with_course(ccode=None):
+    query = ('SELECT * FROM students where fk_course_code = "%s"' % ccode)
+    cursor.execute(query)
+    courses = cursor.fetchall()
+    students = [list(course) for course in courses]
+
+    for i in range(len(students)):
+        if students[i][2] != '':
+            students[i] = [students[i][0], students[i][1] + ' ' + students[i][2][0] + '. ' + students[i][3],
+                           students[i][4], students[i][5], students[i][6]]
+        else:
+            students[i] = [students[i][0], students[i][1] + ' ' + students[i][2] + ' ' + students[i][3], students[i][4],
+                           students[i][5], students[i][6]]
+
+    return students
+
+def get_student_with_year(yearLevel = None):
+    query = ('SELECT * FROM students where year_level = "%s"' % str(yearLevel))
+    cursor.execute(query)
+    yearlevels = cursor.fetchall()
+    students = [list(yearlevel) for yearlevel in yearlevels]
+
+    for i in range(len(students)):
+        if students[i][2] != '':
+            students[i] = [students[i][0], students[i][1] + ' ' + students[i][2][0] + '. ' + students[i][3],
+                           students[i][4], students[i][5], students[i][6]]
+        else:
+            students[i] = [students[i][0], students[i][1] + ' ' + students[i][2] + ' ' + students[i][3], students[i][4],
+                           students[i][5], students[i][6]]
+
+    return students
 
 
 def get_courses(query='SELECT course_code from courses'):

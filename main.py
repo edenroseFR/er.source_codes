@@ -108,6 +108,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.ui.pushButton_LOGOUT.clicked.connect(self.logout)
         self.ui.id.clicked.connect(self.sort_by_id)
         self.ui.lastname.clicked.connect(self.sort_by_lastname)
+        self.ui.course.clicked.connect(self.sort_by_course)
+        self.ui.yearlevel.clicked.connect(self.sort_by_yearlevel)
         self.fillTable()
 
 
@@ -138,6 +140,14 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def sort_by_lastname(self):
         sorted = sort.byLastName()
+        self.fillTable(sorted)
+
+    def sort_by_course(self):
+        sorted = sort.bycourse()
+        self.fillTable(sorted)
+
+    def sort_by_yearlevel(self):
+        sorted = sort.byYearLevel()
         self.fillTable(sorted)
 
 
