@@ -321,6 +321,31 @@ class Ui_MainWindow(object):
         self.pushButton_changePassword.setFlat(True)
         self.pushButton_changePassword.setObjectName("pushButton_changePassword")
         self.label_count = QtWidgets.QLabel(self.frame)
+        self.studentSection = QtWidgets.QPushButton(self.frame)
+        self.studentSection.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.studentSection.setText('Students: N')
+        self.studentSection.setGeometry(QtCore.QRect(10, 50, 121, 31))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.studentSection.setFont(font)
+        self.studentSection.setStyleSheet("#studentSection{\n"
+                                          "border: 1px solid white;\n"
+                                          "border-radius: 10px;\n"
+                                          "}")
+        self.studentSection.setObjectName("studentSection")
+        self.courseSection = QtWidgets.QPushButton(self.frame)
+        self.courseSection.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.courseSection.setText('Courses: N')
+        self.courseSection.setGeometry(QtCore.QRect(10, 90, 121, 31))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.courseSection.setFont(font)
+        self.courseSection.setStyleSheet("#courseSection{\n"
+                                         "border: 1px solid white;\n"
+                                         "border-radius: 10px;\n"
+                                         "}")
+        self.courseSection.setObjectName("courseSection")
+
         self.label_count.setGeometry(QtCore.QRect(6, 20, 131, 20))
         self.label_count.setStyleSheet("#label_count{\n"
 "color: white;\n"
@@ -328,32 +353,7 @@ class Ui_MainWindow(object):
 "}")
         self.label_count.setAlignment(QtCore.Qt.AlignCenter)
         self.label_count.setObjectName("label_count")
-        self.graphicsView_students = QtWidgets.QGraphicsView(self.frame)
-        self.graphicsView_students.setGeometry(QtCore.QRect(20, 50, 111, 101))
-        self.graphicsView_students.setStyleSheet("#graphicsView_students{\n"
-"border: 2px;\n"
-"border-radius: 20px;\n"
-"}")
-        self.graphicsView_students.setObjectName("graphicsView_students")
-        self.label_students = QtWidgets.QLabel(self.frame)
-        self.label_students.setGeometry(QtCore.QRect(30, 60, 47, 13))
-        self.label_students.setStyleSheet("#label_students {\n"
-"color:rgb(42, 0, 127);\n"
-"}")
-        self.label_students.setObjectName("label_students")
-        self.graphicsView_courses = QtWidgets.QGraphicsView(self.frame)
-        self.graphicsView_courses.setGeometry(QtCore.QRect(20, 170, 111, 101))
-        self.graphicsView_courses.setStyleSheet("#graphicsView_courses{\n"
-"border: 2px;\n"
-"border-radius: 20px;\n"
-"}")
-        self.graphicsView_courses.setObjectName("graphicsView_courses")
-        self.label_courses = QtWidgets.QLabel(self.frame)
-        self.label_courses.setGeometry(QtCore.QRect(30, 180, 47, 13))
-        self.label_courses.setStyleSheet("#label_courses {\n"
-"color:rgb(42, 0, 127);\n"
-"}")
-        self.label_courses.setObjectName("label_courses")
+
         self.pushButton_LOGOUT = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_LOGOUT.setGeometry(QtCore.QRect(10, 10, 81, 23))
         font = QtGui.QFont()
@@ -421,8 +421,6 @@ class Ui_MainWindow(object):
         self.pushButton_changeUsername.setText(_translate("MainWindow", "Change Username"))
         self.pushButton_changePassword.setText(_translate("MainWindow", "Change Password"))
         self.label_count.setText(_translate("MainWindow", "Counts"))
-        self.label_students.setText(_translate("MainWindow", "Students"))
-        self.label_courses.setText(_translate("MainWindow", "Courses"))
         self.pushButton_LOGOUT.setText(_translate("MainWindow", "LOGOUT"))
 
 

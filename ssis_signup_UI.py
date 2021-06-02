@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_SignUp(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(805, 576)
+        Form.setFixedSize(805, 576)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("images/main_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         Form.setWindowIcon(icon)

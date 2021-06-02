@@ -170,4 +170,3 @@ def add_student(id, first, middle, last, course, year, gender):
     cursor.execute(query)
     database.commit()
     return
-

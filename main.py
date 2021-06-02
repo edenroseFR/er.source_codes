@@ -125,6 +125,10 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
             row += 1
 
+        self.ui.studentSection.setText('Students: ' + str(len(db.students())))
+        self.ui.courseSection.setText('Courses: ' + str(len(db.get_courses())))
+
+
     def goto_addStudent(self):
         self.popUp = AddStudent(self, winName='Add New Student')
         self.popUp.show()
