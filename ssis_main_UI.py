@@ -1,4 +1,6 @@
-from PyQt5 import QtCore, QtGui, QtWidgets
+
+from PyQt5.QtWidgets import QSizePolicy
+
 from ssis_form_UI import *
 import db
 
@@ -7,7 +9,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.setEnabled(True)
-        MainWindow.resize(853, 480)
+        MainWindow.setFixedSize(853, 480)
         palette = QtGui.QPalette()
         brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
         brush.setStyle(QtCore.Qt.SolidPattern)

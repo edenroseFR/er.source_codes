@@ -18,7 +18,7 @@ class Ui_courseForm(object):
         self.coursecode = course_code
         self.winName = winName
         MainWindow.setObjectName(self.winName)
-        MainWindow.resize(335, 217)
+        MainWindow.setFixedSize(335, 217)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("../images/main_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)

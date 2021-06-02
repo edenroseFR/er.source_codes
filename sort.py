@@ -91,5 +91,3 @@ def byYearLevel():
             sorted_student.append(j)
 
     return sorted_student
-
-print(byYearLevel())
