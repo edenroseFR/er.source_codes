@@ -216,21 +216,33 @@ class AddStudent(QtWidgets.QMainWindow, Ui_Form):
         course = self.ui.comboBox.currentText()
         year = str(self.ui.comboBox_2.currentText())
         gender = str(self.ui.comboBox_3.currentText())
-        if id and first_name and last_name and course in db.get_courses() and year and gender:
+        self.pattern = '^[0-9]{4}-[0-9]{4}$'
+        if (re.search(self.pattern, id) and id not in db.get_IDs()) and first_name and last_name \
+                and course in db.get_courses() and year and gender:
 
             if not d:
                 db.add_student(id, first_name, middle_name, last_name, course, year, gender)
-                messagebox.addSuccessful(MainWindow())
                 self.close()
+                messagebox.addSuccessful(MainWindow())
             else:
                 db.update_student(self.studID, first_name, middle_name, last_name, course, year, gender)
                 self.close()
 
             self.p.fillTable(students=db.students())
 
+        elif not re.search(self.pattern, id):
+            messagebox.wrongPattern(self)
+
+        elif id in db.get_IDs():
+            messagebox.idAlreadyTaken(self, studID=id)
+
+        elif not first_name or not last_name or not year or not gender:
+            messagebox.incompleteInfo(self)
+
         elif course not in db.get_courses():
-            self.addCourse = CourseForm(MainWindow(), mode = 'add', course_code=course, winName='Add Course')
-            self.addCourse.show()
+            if messagebox.addCoursePrompt(self) == 'continue':
+                self.addCourse = CourseForm(MainWindow(), mode = 'add', course_code=course, winName='Add Course')
+                self.addCourse.show()
 
 
 class CourseForm(QtWidgets.QMainWindow, Ui_courseForm):
@@ -239,11 +251,35 @@ class CourseForm(QtWidgets.QMainWindow, Ui_courseForm):
         self.p = parent
         self.mode = mode
         self.coursecode = course_code
+        self.winName = winName
+
         self.ui = Ui_courseForm()
         self.ui.setupUi(self, parent, mode, course_code, winName)
         self.configureWidgets()
+
     def configureWidgets(self):
         self.ui.coursecode.setText(self.coursecode)
+        self.ui.pushButton.setText(self.winName)
+
+        if self.mode == 'add':
+            self.ui.pushButton.clicked.connect(self.checkInformation)
+        else:
+            self.ui.pushButton.clicked.connect(self.edit_course)
+
+    def edit_course(self):
+        self.checkInformation(mode='edit')
+
+    def checkInformation(self, mode=None):
+        cname = self.ui.lineEdit.text()
+        if cname:
+            if messagebox.confirmAddCourse(self, self.coursecode, cname) == 'continue':
+                db.add_course(self.coursecode, cname)
+                self.close()
+                messagebox.courseAdded(self)
+
+        else:
+            messagebox.incompleteInfo(self)
+
 
 
 

@@ -27,6 +27,16 @@ def get_student(id=None):
 
     return result
 
+def get_IDs():
+    query = ('SELECT students_id FROM students')
+    cursor.execute(query)
+    ids = cursor.fetchall()
+    ids = [list(id) for id in ids]
+
+    for i in range(len(ids)):
+        ids[i]  = ids[i][0]
+
+    return ids
 
 
 
@@ -39,6 +49,13 @@ def get_courses(query='SELECT course_code from courses'):
         courses[i] = courses[i][0]
 
     return courses
+
+
+def add_course(course_code = None, course_name = None):
+    query = ('INSERT into courses (course_code, course_name) VALUES("%s", "%s");' % (course_code, course_name))
+    cursor.execute(query)
+    database.commit()
+    return
 
 
 def update_student(id, first, middle, last, course, year, gender):
