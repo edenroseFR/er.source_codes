@@ -55,9 +55,14 @@ def byID():
 
 
 def byLastName():
-    unsorted_lastName = db.get_lastname()
+    unsorted_lastName = db.get_StudentLastname()
     sorted_lastName = mergeSort(unsorted_lastName)
     sorted_student = []
 
-    for lastname in sorted_lastName:
-        pass
+    for i in sorted_lastName:
+        students = db.get_lastname(i)
+        for j in students:
+            sorted_student.append(j)
+
+    return sorted_student
+

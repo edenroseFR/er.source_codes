@@ -137,9 +137,9 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.fillTable(sorted)
 
     def sort_by_lastname(self):
-        # ongoing
         sorted = sort.byLastName()
         self.fillTable(sorted)
+
 
     def search_student(self):
         type = self.ui.comboBox.currentText()
