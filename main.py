@@ -9,6 +9,7 @@ from ssis_signup_UI import Ui_SignUp
 from form import Ui_Form
 from courseForm import Ui_courseForm
 import messagebox
+import sort
 import db
 
 
@@ -99,11 +100,14 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.configureWidgets()
 
     def configureWidgets(self):
+        self.ui.tableWidget.horizontalHeader().setDefaultAlignment(QtCore.Qt.AlignLeft)
         self.ui.pushButton_addNew.clicked.connect(self.goto_addStudent)
         self.ui.pushButton_search.clicked.connect(self.search_student)
         self.ui.pushButton_edit.clicked.connect(self.edit_student)
         self.ui.pushButton_delete.clicked.connect(self.delete_student)
         self.ui.pushButton_LOGOUT.clicked.connect(self.logout)
+        self.ui.id.clicked.connect(self.sort_by_id)
+        self.ui.lastname.clicked.connect(self.sort_by_lastname)
         self.fillTable()
 
 
@@ -127,6 +131,15 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.close()
         self.login = Login()
         self.login.show()
+
+    def sort_by_id(self):
+        sorted = sort.byID()
+        self.fillTable(sorted)
+
+    def sort_by_lastname(self):
+        # ongoing
+        sorted = sort.byLastName()
+        self.fillTable(sorted)
 
     def search_student(self):
         type = self.ui.comboBox.currentText()

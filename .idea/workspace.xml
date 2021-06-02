@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38838e3b-ff52-4acb-9eea-ee3c487cf63e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/sort.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/db.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messagebox.py" beforeDir="false" afterPath="$PROJECT_DIR$/messagebox.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +124,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="ssis_main_UI" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="sort" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="SISV2" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -136,7 +136,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ssis_main_UI.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sort.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -148,10 +148,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.sort" />
         <item itemvalue="Python.db" />
         <item itemvalue="Python.messagebox" />
         <item itemvalue="Python.main2" />
-        <item itemvalue="Python.ssis_main_UI" />
       </list>
     </recent_temporary>
   </component>
@@ -220,7 +220,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622573089416</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="CourseForm class updated. New messagebox  added">
+      <created>1622612402586</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1622612402586</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -231,51 +238,52 @@
     <MESSAGE value="edit button already functional" />
     <MESSAGE value="delete button already functional" />
     <MESSAGE value="CourseForm class added" />
-    <option name="LAST_COMMIT_MESSAGE" value="CourseForm class added" />
+    <MESSAGE value="CourseForm class updated. New messagebox  added" />
+    <option name="LAST_COMMIT_MESSAGE" value="CourseForm class updated. New messagebox  added" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1761" y="-349" key="CommitChangelistDialog2" timestamp="1622573087472">
+    <state x="1761" y="-349" key="CommitChangelistDialog2" timestamp="1622612400376">
       <screen x="1366" y="-349" width="1600" height="870" />
     </state>
-    <state x="1761" y="-349" key="CommitChangelistDialog2/0.0.1366.738/1366.-349.1600.870@1366.-349.1600.870" timestamp="1622573087472" />
+    <state x="1761" y="-349" key="CommitChangelistDialog2/0.0.1366.738/1366.-349.1600.870@1366.-349.1600.870" timestamp="1622612400376" />
     <state x="337" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1621959051773" />
     <state x="1908" y="-204" key="FileChooserDialogImpl" timestamp="1622536892002">
       <screen x="1366" y="-349" width="1600" height="870" />
     </state>
     <state x="1908" y="-204" key="FileChooserDialogImpl/0.0.1366.738/1366.-349.1600.870@1366.-349.1600.870" timestamp="1622536892002" />
     <state x="463" y="123" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1621999238780" />
-    <state width="1601" height="696" key="GridCell.Tab.0.bottom" timestamp="1622612345052">
-      <screen x="1366" y="-349" width="1600" height="870" />
+    <state width="1367" height="575" key="GridCell.Tab.0.bottom" timestamp="1622615000199">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1367" height="390" key="GridCell.Tab.0.bottom/0.0.1366.738/1366.-349.1600.870@0.0.1366.738" timestamp="1622085224847" />
-    <state width="1601" height="696" key="GridCell.Tab.0.bottom/0.0.1366.738/1366.-349.1600.870@1366.-349.1600.870" timestamp="1622612345052" />
+    <state width="1367" height="575" key="GridCell.Tab.0.bottom/0.0.1366.738/1366.-349.1600.870@0.0.1366.738" timestamp="1622615000199" />
+    <state width="1601" height="696" key="GridCell.Tab.0.bottom/0.0.1366.738/1366.-349.1600.870@1366.-349.1600.870" timestamp="1622613901466" />
     <state width="1367" height="602" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1622019327872" />
-    <state width="1601" height="696" key="GridCell.Tab.0.center" timestamp="1622612345051">
-      <screen x="1366" y="-349" width="1600" height="870" />
+    <state width="1367" height="575" key="GridCell.Tab.0.center" timestamp="1622615000199">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1367" height="390" key="GridCell.Tab.0.center/0.0.1366.738/1366.-349.1600.870@0.0.1366.738" timestamp="1622085224847" />
-    <state width="1601" height="696" key="GridCell.Tab.0.center/0.0.1366.738/1366.-349.1600.870@1366.-349.1600.870" timestamp="1622612345051" />
+    <state width="1367" height="575" key="GridCell.Tab.0.center/0.0.1366.738/1366.-349.1600.870@0.0.1366.738" timestamp="1622615000199" />
+    <state width="1601" height="696" key="GridCell.Tab.0.center/0.0.1366.738/1366.-349.1600.870@1366.-349.1600.870" timestamp="1622613901466" />
     <state width="1367" height="602" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1622019327872" />
-    <state width="1601" height="696" key="GridCell.Tab.0.left" timestamp="1622612345051">
-      <screen x="1366" y="-349" width="1600" height="870" />
+    <state width="1367" height="575" key="GridCell.Tab.0.left" timestamp="1622615000199">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1367" height="390" key="GridCell.Tab.0.left/0.0.1366.738/1366.-349.1600.870@0.0.1366.738" timestamp="1622085224847" />
-    <state width="1601" height="696" key="GridCell.Tab.0.left/0.0.1366.738/1366.-349.1600.870@1366.-349.1600.870" timestamp="1622612345051" />
+    <state width="1367" height="575" key="GridCell.Tab.0.left/0.0.1366.738/1366.-349.1600.870@0.0.1366.738" timestamp="1622615000199" />
+    <state width="1601" height="696" key="GridCell.Tab.0.left/0.0.1366.738/1366.-349.1600.870@1366.-349.1600.870" timestamp="1622613901466" />
     <state width="1367" height="602" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1622019327872" />
-    <state width="1601" height="696" key="GridCell.Tab.0.right" timestamp="1622612345051">
-      <screen x="1366" y="-349" width="1600" height="870" />
+    <state width="1367" height="575" key="GridCell.Tab.0.right" timestamp="1622615000199">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1367" height="390" key="GridCell.Tab.0.right/0.0.1366.738/1366.-349.1600.870@0.0.1366.738" timestamp="1622085224847" />
-    <state width="1601" height="696" key="GridCell.Tab.0.right/0.0.1366.738/1366.-349.1600.870@1366.-349.1600.870" timestamp="1622612345051" />
+    <state width="1367" height="575" key="GridCell.Tab.0.right/0.0.1366.738/1366.-349.1600.870@0.0.1366.738" timestamp="1622615000199" />
+    <state width="1601" height="696" key="GridCell.Tab.0.right/0.0.1366.738/1366.-349.1600.870@1366.-349.1600.870" timestamp="1622613901466" />
     <state width="1367" height="602" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1622019327872" />
     <state x="285" y="0" key="SettingsEditor" timestamp="1621995792748">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="285" y="0" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1621995792748" />
-    <state x="1688" y="-230" key="Vcs.Push.Dialog.v2" timestamp="1622574696261">
+    <state x="1688" y="-230" key="Vcs.Push.Dialog.v2" timestamp="1622612410910">
       <screen x="1366" y="-349" width="1600" height="870" />
     </state>
-    <state x="1688" y="-230" key="Vcs.Push.Dialog.v2/0.0.1366.738/1366.-349.1600.870@1366.-349.1600.870" timestamp="1622574696261" />
+    <state x="1688" y="-230" key="Vcs.Push.Dialog.v2/0.0.1366.738/1366.-349.1600.870@1366.-349.1600.870" timestamp="1622612410910" />
     <state x="275" y="101" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1621959062834" />
     <state x="1810" y="-123" key="com.intellij.ide.util.TipDialog" timestamp="1622128335804">
       <screen x="1366" y="-349" width="1600" height="870" />

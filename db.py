@@ -39,6 +39,17 @@ def get_IDs():
     return ids
 
 
+def get_lastname():
+    query = ('SELECT last_name FROM students')
+    cursor.execute(query)
+    lastnames = cursor.fetchall()
+    lastnames = [list(lastname) for lastname in lastnames]
+
+    for i in range(len(lastnames)):
+        lastnames[i] = lastnames[i][0]
+
+    return lastnames
+
 
 def get_courses(query='SELECT course_code from courses'):
     cursor.execute(query)
