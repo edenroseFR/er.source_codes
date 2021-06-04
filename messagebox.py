@@ -38,3 +38,9 @@ def addCoursePrompt(parent=None):
 
 def courseAdded(parent=None):
     QMessageBox.information(parent, 'Add Successful', 'New course added successfully!')
+
+
+def cantDeleteCourse(parent=None, name=None, enrolled=None):
+    prompt = QMessageBox.warning(parent, 'Deletion Error.',
+                                 '%s cannot be deleted\nbecause %s students are enrolled in this course.' % (name, str(enrolled)),
+                                 QMessageBox.Ok, QMessageBox.Ok)

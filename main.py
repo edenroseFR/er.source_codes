@@ -1,6 +1,6 @@
 import sys
 
-from PyQt5.QtWidgets import QTableWidgetItem
+from PyQt5.QtWidgets import QTableWidgetItem, QHeaderView
 import re
 from PyQt5 import QtCore, QtGui, QtWidgets
 from ssis_main_UI import Ui_MainWindow
@@ -102,7 +102,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def configureWidgets(self):
         self.ui.tableWidget.horizontalHeader().setDefaultAlignment(QtCore.Qt.AlignLeft)
         self.ui.pushButton_addNew.clicked.connect(self.goto_addStudent)
-        self.ui.pushButton_search.clicked.connect(self.search_student)
+        self.ui.pushButton_search.clicked.connect(self.search)
         self.ui.pushButton_edit.clicked.connect(self.edit_student)
         self.ui.pushButton_delete.clicked.connect(self.delete_student)
         self.ui.pushButton_LOGOUT.clicked.connect(self.logout)
@@ -110,20 +110,32 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.ui.lastname.clicked.connect(self.sort_by_lastname)
         self.ui.course.clicked.connect(self.sort_by_course)
         self.ui.yearlevel.clicked.connect(self.sort_by_yearlevel)
-        self.fillTable()
+        self.ui.courseSection.clicked.connect(self.show_courses)
+        self.ui.studentSection.clicked.connect(self.show_students)
+        self.fillTable(students=db.students())
 
 
-    def fillTable(self, students=db.students()):
+    def fillTable(self, students=None, courses=None):
         row = 0
-        self.ui.tableWidget.setRowCount(len(students))
-        for student in students:
-            self.ui.tableWidget.setItem(row, 0, QTableWidgetItem(str(student[0])))
-            self.ui.tableWidget.setItem(row, 1, QTableWidgetItem(str(student[1])))
-            self.ui.tableWidget.setItem(row, 2, QTableWidgetItem(str(student[2])))
-            self.ui.tableWidget.setItem(row, 3, QTableWidgetItem(str(student[3])))
-            self.ui.tableWidget.setItem(row, 4, QTableWidgetItem(str(student[4])))
 
-            row += 1
+        if students:
+            self.ui.tableWidget.setRowCount(len(students))
+            for each in students:
+                self.ui.tableWidget.setItem(row, 0, QTableWidgetItem(str(each[0])))
+                self.ui.tableWidget.setItem(row, 1, QTableWidgetItem(str(each[1])))
+                self.ui.tableWidget.setItem(row, 2, QTableWidgetItem(str(each[2])))
+                self.ui.tableWidget.setItem(row, 3, QTableWidgetItem(str(each[3])))
+                self.ui.tableWidget.setItem(row, 4, QTableWidgetItem(str(each[4])))
+
+                row += 1
+        elif courses:
+            self.ui.tableWidget.setRowCount(len(courses))
+            for each in courses:
+                self.ui.tableWidget.setItem(row, 0, QTableWidgetItem(str(each[0])))
+                self.ui.tableWidget.setItem(row, 1, QTableWidgetItem(str(each[1])))
+                self.ui.tableWidget.setItem(row, 2, QTableWidgetItem(str(each[2])))
+
+                row += 1
 
         self.ui.studentSection.setText('Students: ' + str(len(db.students())))
         self.ui.courseSection.setText('Courses: ' + str(len(db.get_courses())))
@@ -140,22 +152,89 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def sort_by_id(self):
         sorted = sort.byID()
-        self.fillTable(sorted)
+        self.fillTable(students=sorted)
 
     def sort_by_lastname(self):
         sorted = sort.byLastName()
-        self.fillTable(sorted)
+        self.fillTable(students=sorted)
 
     def sort_by_course(self):
         sorted = sort.bycourse()
-        self.fillTable(sorted)
+        self.fillTable(students=sorted)
 
     def sort_by_yearlevel(self):
         sorted = sort.byYearLevel()
-        self.fillTable(sorted)
+        self.fillTable(students=sorted)
+
+    def show_courses(self):
+        self.t_header = self.ui.tableWidget.horizontalHeader()
+        self.t_header.setSectionResizeMode(1, QHeaderView.ResizeToContents)
+        self.t_header.setSectionResizeMode(2, QHeaderView.Stretch)
+        self.t_header.hideSection(3)
+        self.t_header.hideSection(4)
+        col1 = self.ui.tableWidget.horizontalHeaderItem(0)
+        col1.setText('COURSE CODE')
+        col2 = self.ui.tableWidget.horizontalHeaderItem(1)
+        col2.setText('COURSE NAME')
+        col3 = self.ui.tableWidget.horizontalHeaderItem(2)
+        col3.setText('ENROLLED STUDENT')
+
+        self.fillTable(courses= db.courses())
+
+        self.ui.pushButton_delete.disconnect()
+        self.ui.pushButton_delete.clicked.connect(self.del_course)
+        self.ui.pushButton_edit.disconnect()
+        self.ui.pushButton_edit.clicked.connect(self.edit_course)
+        self.ui.pushButton_addNew.setDisabled(True)
+        self.ui.pushButton_sort.setDisabled(True)
+        self.ui.comboBox.clear()
+        self.ui.comboBox.addItems(['code', 'name'])
 
 
-    def search_student(self):
+
+
+    def del_course(self):
+        enrolled = int(self.ui.tableWidget.item(self.ui.tableWidget.currentRow(), 2).text())
+        selected_ccode = self.ui.tableWidget.item(self.ui.tableWidget.currentRow(), 0).text()
+        selected_cname = self.ui.tableWidget.item(self.ui.tableWidget.currentRow(), 1).text()
+        if self.ui.tableWidget.selectedItems() != [] and enrolled == 0:
+            if messagebox.confirmDelete(self, selected_cname) == 'continue':
+                db.delete_course(selected_ccode)
+                self.fillTable(courses=db.courses())
+
+        elif enrolled > 0:
+            messagebox.cantDeleteCourse(self, selected_cname, enrolled)
+
+    def edit_course(self):
+        ccode = self.ui.tableWidget.item(self.ui.tableWidget.currentRow(), 0).text()
+        self.courseForm = CourseForm(self, mode='edit',course_code=ccode, winName='Edit Course')
+        self.courseForm.show()
+
+
+
+    def show_students(self):
+        self.t_header = self.ui.tableWidget.horizontalHeader()
+        self.t_header.setSectionResizeMode(2, QHeaderView.ResizeToContents)
+        self.t_header.setSectionResizeMode(4, QHeaderView.Stretch)
+        self.ui.tableWidget.setColumnWidth(2, 50)
+        self.ui.tableWidget.setColumnWidth(3, 70)
+        col1 = self.ui.tableWidget.horizontalHeaderItem(0)
+        col1.setText('Student ID')
+        col2 = self.ui.tableWidget.horizontalHeaderItem(1)
+        col2.setText('Name')
+        col3 = self.ui.tableWidget.horizontalHeaderItem(2)
+        col3.setText('Course')
+        self.t_header.showSection(3)
+        self.t_header.showSection(4)
+
+        self.fillTable(students=db.students())
+        self.ui.comboBox.clear()
+        self.ui.comboBox.addItems(['ID', 'FIRST NAME', 'MIDDLE NAME', 'LAST NAME', 'COURSE', 'YEAR', 'GENDER'])
+
+
+
+
+    def search(self):
         type = self.ui.comboBox.currentText()
         key = str(self.ui.lineEdit_searchkey.text())
         if type == 'ID':
@@ -172,12 +251,19 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             result = db.students('SELECT * FROM students where year_level = "%s"' % int(key))
         elif type == 'GENDER':
             result = db.students('SELECT * FROM students where gender = "%s"' % key)
+        elif type == 'code':
+            result = db.courses('SELECT * FROM courses where course_code = "%s"' % key)
+        elif type == 'name':
+            result = db.courses('SELECT * FROM courses where course_name = "%s"' % key)
+
 
         if len(result) == 0:
             messagebox.noResult(self)
-            self.fillTable()
+            self.fillTable(students=db.students())
         else:
             self.fillTable(students=result)
+
+
 
     def edit_student(self):
         if self.ui.tableWidget.selectedItems() != []:
@@ -191,7 +277,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             selected_name = self.ui.tableWidget.item(self.ui.tableWidget.currentRow(),1).text()
             if messagebox.confirmDelete(self, selected_name) == 'continue':
                 db.delete_student(selected_id)
-                self.fillTable(db.students())
+                self.fillTable(students=db.students())
 
 
 class AddStudent(QtWidgets.QMainWindow, Ui_Form):
@@ -277,6 +363,7 @@ class CourseForm(QtWidgets.QMainWindow, Ui_courseForm):
         super(CourseForm, self).__init__(parent)
         self.p = parent
         self.mode = mode
+
         self.coursecode = course_code
         self.winName = winName
 
@@ -286,23 +373,32 @@ class CourseForm(QtWidgets.QMainWindow, Ui_courseForm):
 
     def configureWidgets(self):
         self.ui.coursecode.setText(self.coursecode)
-        self.ui.pushButton.setText(self.winName)
+        self.ui.pushButton.cursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
 
         if self.mode == 'add':
             self.ui.pushButton.clicked.connect(self.checkInformation)
-        else:
-            self.ui.pushButton.clicked.connect(self.edit_course)
+        elif self.mode == 'edit':
+            self.ui.lineEdit.setText(db.get_courseName(code=self.coursecode))
+            self.ui.pushButton.clicked.connect(self.edit_name)
 
-    def edit_course(self):
+
+    def edit_name(self):
         self.checkInformation(mode='edit')
 
-    def checkInformation(self, mode=None):
+
+    def checkInformation(self, mode='add'):
         cname = self.ui.lineEdit.text()
         if cname:
-            if messagebox.confirmAddCourse(self, self.coursecode, cname) == 'continue':
-                db.add_course(self.coursecode, cname)
+            if mode == 'add':
+                if messagebox.confirmAddCourse(self, self.coursecode, cname) == 'continue':
+                    db.add_course(self.coursecode, cname)
+                    self.p.fillTable(courses=db.courses())
+                    self.close()
+                    messagebox.courseAdded(self)
+            elif mode == 'edit':
+                db.update_course(self.coursecode, cname)
+                self.p.fillTable(courses=db.courses())
                 self.close()
-                messagebox.courseAdded(self)
 
         else:
             messagebox.incompleteInfo(self)

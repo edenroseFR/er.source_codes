@@ -1,5 +1,5 @@
 
-from PyQt5.QtWidgets import QSizePolicy
+from PyQt5.QtWidgets import QSizePolicy, QHeaderView
 
 from ssis_form_UI import *
 import db
@@ -126,6 +126,10 @@ class Ui_MainWindow(object):
         self.tableWidget.setRowCount(12)
         self.tableWidget.setColumnCount(5)
         self.tableWidget.setColumnWidth(1,180)
+        self.tableWidget.setColumnWidth(2,50)
+        self.tableWidget.setColumnWidth(3, 70)
+
+
         self.tableWidget.setObjectName("tableWidget")
         item = QtWidgets.QTableWidgetItem()
         item.setFlags(QtCore.Qt.ItemIsEditable)
@@ -454,10 +458,6 @@ class Ui_Form(object):
         self.gridLayout = QtWidgets.QGridLayout(self.formLayoutWidget)
         self.gridLayout.setContentsMargins(5, 5, 5, 5)
         self.gridLayout.setObjectName("gridLayout")
-
-        if self.edit:
-            pass
-
 
 
         # student id

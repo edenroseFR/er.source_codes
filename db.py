@@ -19,6 +19,40 @@ def students(query = 'SELECT * FROM students'):
 
     return students
 
+def courses(query='SELECT course_code, course_name, COUNT(*) AS num from courses c '\
+                        'JOIN students s ON c.course_code=s.fk_course_code '\
+                        'GROUP BY c.course_code'):
+    cursor.execute(query)
+    courses = cursor.fetchall()
+    courses = [list(i) for i in courses]
+    existing = [i[0] for i in courses]
+
+    query2 = 'SELECT course_code, course_name, 0 as num from courses'
+    cursor.execute(query2)
+    coursesWithNoStudents = cursor.fetchall()
+    coursesWithNoStudents = [list(i) for i in coursesWithNoStudents]
+
+    for i in coursesWithNoStudents:
+        if i[0] not in existing:
+            courses.append(i)
+
+    return courses
+
+def search_course(query = None):
+    cursor.execute(query)
+    courses = cursor.fetchall()
+    courses = [list(i) for i in courses]
+
+    return courses
+
+
+def delete_course(course_code = None):
+    query = ('DELETE FROM courses WHERE course_code = "%s"' % course_code)
+    cursor.execute(query)
+    database.commit()
+    return
+
+
 def get_student(id=None):
     query = 'SELECT * FROM students where students_id = "%s"' % id
     cursor.execute(query)
@@ -142,6 +176,21 @@ def get_courses(query='SELECT course_code from courses'):
         courses[i] = courses[i][0]
 
     return courses
+
+def get_courseName(code=None):
+    query = 'SELECT course_name from courses WHERE course_code = "%s"' % code
+    cursor.execute(query)
+    result = cursor.fetchall()
+    result = list(result[0])
+    result = result[0]
+
+    return result
+
+def update_course(course_code = None, course_name = None):
+    query = ('UPDATE courses SET course_name = "%s" WHERE course_code = "%s"' % (course_name, course_code))
+    cursor.execute(query)
+    database.commit()
+    return
 
 
 def add_course(course_code = None, course_name = None):

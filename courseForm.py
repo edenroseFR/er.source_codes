@@ -78,7 +78,7 @@ class Ui_courseForm(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "Add Course"))
+        MainWindow.setWindowTitle(_translate("MainWindow", self.winName))
         self.label.setText(_translate("MainWindow", "course code:"))
         self.coursecode.setText(_translate("MainWindow", "CCODE"))
         self.label_3.setText(_translate("MainWindow", "Course Name"))
