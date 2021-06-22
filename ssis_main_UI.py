@@ -264,8 +264,7 @@ class Ui_MainWindow(object):
         self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame.setObjectName("frame")
-        self.label_account = QtWidgets.QLabel(self.frame)
-        self.label_account.setGeometry(QtCore.QRect(0, 350, 111, 16))
+
         palette = QtGui.QPalette()
         brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
         brush.setStyle(QtCore.Qt.SolidPattern)
@@ -294,22 +293,14 @@ class Ui_MainWindow(object):
         brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.ButtonText, brush)
-        self.label_account.setPalette(palette)
+
         font = QtGui.QFont()
         font.setPointSize(10)
         font.setBold(False)
         font.setItalic(False)
         font.setUnderline(True)
         font.setWeight(9)
-        self.label_account.setFont(font)
-        self.label_account.setStyleSheet("#label_account{\n"
-"font: 75 10pt \"MS Shell Dlg 2\";\n"
-"    text-decoration: underline;\n"
-"    text-decoration: underline;\n"
-"color: white;\n"
-"\n"
-"}")
-        self.label_account.setObjectName("label_account")
+
         self.pushButton_changeUsername = QtWidgets.QPushButton(self.frame)
         self.pushButton_changeUsername.setGeometry(QtCore.QRect(4, 370, 131, 23))
         self.pushButton_changeUsername.setStyleSheet("#pushButton_changeUsername {\n"
@@ -421,8 +412,7 @@ class Ui_MainWindow(object):
         self.lastname.setText(_translate("MainWindow", "Last Name"))
         self.course.setText(_translate("MainWindow", "Course"))
         self.yearlevel.setText(_translate("MainWindow", "Year Level"))
-        self.label_account.setText(_translate("MainWindow", "Account Settings"))
-        self.pushButton_changeUsername.setText(_translate("MainWindow", "Change Username"))
+        self.pushButton_changeUsername.setText(_translate("MainWindow", "Account Settings"))
         self.pushButton_changePassword.setText(_translate("MainWindow", "Change Password"))
         self.label_count.setText(_translate("MainWindow", "Counts"))
         self.pushButton_LOGOUT.setText(_translate("MainWindow", "LOGOUT"))

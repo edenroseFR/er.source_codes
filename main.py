@@ -112,6 +112,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.ui.yearlevel.clicked.connect(self.sort_by_yearlevel)
         self.ui.courseSection.clicked.connect(self.show_courses)
         self.ui.studentSection.clicked.connect(self.show_students)
+        self.ui.pushButton_changeUsername.clicked.connect(self.change_username)
         self.fillTable(students=db.students())
 
 
@@ -149,6 +150,9 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.close()
         self.login = Login()
         self.login.show()
+
+    def change_username(self):
+        print('here')
 
     def sort_by_id(self):
         sorted = sort.byID()
@@ -410,6 +414,6 @@ class CourseForm(QtWidgets.QMainWindow, Ui_courseForm):
 
 
 app = QtWidgets.QApplication(sys.argv)
-win = MainWindow()
+win = Login()
 win.show()
 sys.exit(app.exec_())
