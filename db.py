@@ -38,12 +38,20 @@ def courses(query='SELECT course_code, course_name, COUNT(*) AS num from courses
 
     return courses
 
-def search_course(query = None):
-    cursor.execute(query)
-    courses = cursor.fetchall()
-    courses = [list(i) for i in courses]
+def search_course(key = None, comboBox=None):
+    coursesList = courses()
+    result = []
+    if comboBox == 'code':
+        for i in coursesList:
+            if key.lower() == i[0].lower():
+                result.append(i)
+    elif comboBox == 'name':
+        for i in coursesList:
+            if key.lower() == i[1].lower():
+                result.append(i)
 
-    return courses
+
+    return result
 
 
 def delete_course(course_code = None):

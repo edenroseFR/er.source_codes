@@ -100,6 +100,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.configureWidgets()
 
     def configureWidgets(self):
+        self.ui.pushButton_changePassword.close()
+        self.ui.pushButton_changeUsername.close()
         self.ui.tableWidget.horizontalHeader().setDefaultAlignment(QtCore.Qt.AlignLeft)
         self.ui.pushButton_addNew.clicked.connect(self.goto_addStudent)
         self.ui.pushButton_search.clicked.connect(self.search)
@@ -191,11 +193,16 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.ui.pushButton_edit.clicked.connect(self.edit_course)
         self.ui.pushButton_addNew.setDisabled(True)
         self.ui.pushButton_sort.setDisabled(True)
+        self.ui.pushButton_search.disconnect()
+        self.ui.pushButton_search.clicked.connect(self.course_result)
         self.ui.comboBox.clear()
         self.ui.comboBox.addItems(['code', 'name'])
 
 
-
+    def course_result(self):
+        self.key = self.ui.lineEdit_searchkey.text()
+        self.result = db.search_course(key=self.key, comboBox=self.ui.comboBox.currentText())
+        self.fillTable(courses=self.result)
 
     def del_course(self):
         enrolled = int(self.ui.tableWidget.item(self.ui.tableWidget.currentRow(), 2).text())

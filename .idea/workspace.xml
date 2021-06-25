@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/db.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ssis_main_UI.py" beforeDir="false" afterPath="$PROJECT_DIR$/ssis_main_UI.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +34,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Python" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="TEXT&#10;Python" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
@@ -82,27 +81,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="main2" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="SISV2" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main2.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="messagebox" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="SISV2" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -116,6 +94,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/messagebox.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="scratch_30" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="SISV2" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$APPLICATION_CONFIG_DIR$/scratches" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$APPLICATION_CONFIG_DIR$/scratches/scratch_30.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -148,10 +147,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.scratch_30" />
         <item itemvalue="Python.db" />
         <item itemvalue="Python.sort" />
         <item itemvalue="Python.messagebox" />
-        <item itemvalue="Python.main2" />
       </list>
     </recent_temporary>
   </component>
@@ -269,7 +268,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622827352645</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="changed the first slide to Login">
+      <created>1624340677528</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1624340677528</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -287,63 +293,80 @@
     <MESSAGE value="Windows size set as fixed" />
     <MESSAGE value="Count graphs changed to buttons" />
     <MESSAGE value="courses buttons working" />
-    <option name="LAST_COMMIT_MESSAGE" value="courses buttons working" />
+    <MESSAGE value="changed the first slide to Login" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed the first slide to Login" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="337" y="0" key="CommitChangelistDialog2" timestamp="1622827350687">
+    <state x="337" y="0" key="CommitChangelistDialog2" timestamp="1624340672477">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="337" y="0" key="CommitChangelistDialog2/0.0.1366.738/1366.-349.1600.870@0.0.1366.738" timestamp="1622827350687" />
+    <state x="337" y="0" key="CommitChangelistDialog2/0.0.1366.738/1366.-349.1600.870@0.0.1366.738" timestamp="1624340672477" />
     <state x="1761" y="-349" key="CommitChangelistDialog2/0.0.1366.738/1366.-349.1600.870@1366.-349.1600.870" timestamp="1622661764858" />
     <state x="337" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1621959051773" />
-    <state x="463" y="123" key="FileChooserDialogImpl" timestamp="1623804668363">
+    <state x="463" y="123" key="FileChooserDialogImpl" timestamp="1624509423051">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="463" y="123" key="FileChooserDialogImpl/0.0.1366.738/1366.-349.1600.870@0.0.1366.738" timestamp="1623804668363" />
+    <state x="463" y="123" key="FileChooserDialogImpl/0.0.1366.738/1366.-349.1600.870@0.0.1366.738" timestamp="1624509423051" />
     <state x="1908" y="-204" key="FileChooserDialogImpl/0.0.1366.738/1366.-349.1600.870@1366.-349.1600.870" timestamp="1622536892002" />
     <state x="463" y="123" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1621999238780" />
-    <state width="1367" height="452" key="GridCell.Tab.0.bottom" timestamp="1624340648329">
+    <state width="1367" height="451" key="GridCell.Tab.0.bottom" timestamp="1624597960083">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1367" height="452" key="GridCell.Tab.0.bottom/0.0.1366.738/1366.-349.1600.870@0.0.1366.738" timestamp="1624340648329" />
-    <state width="1601" height="694" key="GridCell.Tab.0.bottom/0.0.1366.738/1366.-349.1600.870@1366.-349.1600.870" timestamp="1622661775145" />
+    <state width="1367" height="451" key="GridCell.Tab.0.bottom/0.0.1366.738/1366.-349.1600.870@0.0.1366.738" timestamp="1624597960083" />
+    <state width="1350" height="446" key="GridCell.Tab.0.bottom/0.0.1366.738/1366.-349.1600.870@1366.-349.1600.870" timestamp="1624595949908" />
     <state width="1367" height="575" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1622648321290" />
     <state width="1601" height="570" key="GridCell.Tab.0.bottom/0.0.1366.768/1366.-349.1600.900@1366.-349.1600.900" timestamp="1623168949270" />
-    <state width="1367" height="452" key="GridCell.Tab.0.center" timestamp="1624340648329">
+    <state width="1367" height="451" key="GridCell.Tab.0.center" timestamp="1624597960083">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1367" height="452" key="GridCell.Tab.0.center/0.0.1366.738/1366.-349.1600.870@0.0.1366.738" timestamp="1624340648329" />
-    <state width="1601" height="694" key="GridCell.Tab.0.center/0.0.1366.738/1366.-349.1600.870@1366.-349.1600.870" timestamp="1622661775145" />
+    <state width="1367" height="451" key="GridCell.Tab.0.center/0.0.1366.738/1366.-349.1600.870@0.0.1366.738" timestamp="1624597960083" />
+    <state width="1350" height="446" key="GridCell.Tab.0.center/0.0.1366.738/1366.-349.1600.870@1366.-349.1600.870" timestamp="1624595949908" />
     <state width="1367" height="575" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1622648321284" />
     <state width="1601" height="570" key="GridCell.Tab.0.center/0.0.1366.768/1366.-349.1600.900@1366.-349.1600.900" timestamp="1623168949270" />
-    <state width="1367" height="452" key="GridCell.Tab.0.left" timestamp="1624340648329">
+    <state width="1367" height="451" key="GridCell.Tab.0.left" timestamp="1624597960083">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1367" height="452" key="GridCell.Tab.0.left/0.0.1366.738/1366.-349.1600.870@0.0.1366.738" timestamp="1624340648329" />
-    <state width="1601" height="694" key="GridCell.Tab.0.left/0.0.1366.738/1366.-349.1600.870@1366.-349.1600.870" timestamp="1622661775145" />
+    <state width="1367" height="451" key="GridCell.Tab.0.left/0.0.1366.738/1366.-349.1600.870@0.0.1366.738" timestamp="1624597960083" />
+    <state width="1350" height="446" key="GridCell.Tab.0.left/0.0.1366.738/1366.-349.1600.870@1366.-349.1600.870" timestamp="1624595949908" />
     <state width="1367" height="575" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1622648321279" />
     <state width="1601" height="570" key="GridCell.Tab.0.left/0.0.1366.768/1366.-349.1600.900@1366.-349.1600.900" timestamp="1623168949270" />
-    <state width="1367" height="452" key="GridCell.Tab.0.right" timestamp="1624340648329">
+    <state width="1367" height="451" key="GridCell.Tab.0.right" timestamp="1624597960083">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1367" height="452" key="GridCell.Tab.0.right/0.0.1366.738/1366.-349.1600.870@0.0.1366.738" timestamp="1624340648329" />
-    <state width="1601" height="694" key="GridCell.Tab.0.right/0.0.1366.738/1366.-349.1600.870@1366.-349.1600.870" timestamp="1622661775145" />
+    <state width="1367" height="451" key="GridCell.Tab.0.right/0.0.1366.738/1366.-349.1600.870@0.0.1366.738" timestamp="1624597960083" />
+    <state width="1350" height="446" key="GridCell.Tab.0.right/0.0.1366.738/1366.-349.1600.870@1366.-349.1600.870" timestamp="1624595949908" />
     <state width="1367" height="575" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1622648321286" />
     <state width="1601" height="570" key="GridCell.Tab.0.right/0.0.1366.768/1366.-349.1600.900@1366.-349.1600.900" timestamp="1623168949270" />
+    <state width="1367" height="236" key="GridCell.Tab.1.bottom" timestamp="1624356350866">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state width="1367" height="236" key="GridCell.Tab.1.bottom/0.0.1366.738/1366.-349.1600.870@0.0.1366.738" timestamp="1624356350866" />
+    <state width="1367" height="236" key="GridCell.Tab.1.center" timestamp="1624356350865">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state width="1367" height="236" key="GridCell.Tab.1.center/0.0.1366.738/1366.-349.1600.870@0.0.1366.738" timestamp="1624356350865" />
+    <state width="1367" height="236" key="GridCell.Tab.1.left" timestamp="1624356350865">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state width="1367" height="236" key="GridCell.Tab.1.left/0.0.1366.738/1366.-349.1600.870@0.0.1366.738" timestamp="1624356350863" />
+    <state width="1367" height="236" key="GridCell.Tab.1.right" timestamp="1624356350866">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state width="1367" height="236" key="GridCell.Tab.1.right/0.0.1366.738/1366.-349.1600.870@0.0.1366.738" timestamp="1624356350866" />
     <state x="285" y="0" key="SettingsEditor" timestamp="1621995792748">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="285" y="0" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1621995792748" />
-    <state x="275" y="101" key="Vcs.Push.Dialog.v2" timestamp="1622827362228">
+    <state x="275" y="101" key="Vcs.Push.Dialog.v2" timestamp="1624340686584">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="275" y="101" key="Vcs.Push.Dialog.v2/0.0.1366.738/1366.-349.1600.870@0.0.1366.738" timestamp="1622827362228" />
+    <state x="275" y="101" key="Vcs.Push.Dialog.v2/0.0.1366.738/1366.-349.1600.870@0.0.1366.738" timestamp="1624340686584" />
     <state x="1688" y="-230" key="Vcs.Push.Dialog.v2/0.0.1366.738/1366.-349.1600.870@1366.-349.1600.870" timestamp="1622658953758" />
     <state x="275" y="101" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1621959062834" />
-    <state x="379" y="192" key="com.intellij.ide.util.TipDialog" timestamp="1624340591637">
+    <state x="379" y="192" key="com.intellij.ide.util.TipDialog" timestamp="1624509404262">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="379" y="192" key="com.intellij.ide.util.TipDialog/0.0.1366.738/1366.-349.1600.870@0.0.1366.738" timestamp="1624340591637" />
+    <state x="379" y="192" key="com.intellij.ide.util.TipDialog/0.0.1366.738/1366.-349.1600.870@0.0.1366.738" timestamp="1624509404262" />
     <state x="1810" y="-123" key="com.intellij.ide.util.TipDialog/0.0.1366.738/1366.-349.1600.870@1366.-349.1600.870" timestamp="1622128335804" />
     <state x="379" y="192" key="com.intellij.ide.util.TipDialog/0.0.1366.738@0.0.1366.738" timestamp="1622643392247" />
     <state x="379" y="200" key="com.intellij.ide.util.TipDialog/0.0.1366.768/1366.-349.1600.900@0.0.1366.768" timestamp="1623168549413" />
